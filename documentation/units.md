@@ -11,9 +11,9 @@ As a part of the `core` header file, the seven standard SI units are already rea
 6. Mole
 7. Candela
 
-On top of that, an additional `Scalar` unit is provided. This represents a dimensionless quanitity. 
-This is included because while units have multiplication and division overloded for other units, they have 
-not implemented the same for numerical types like `double` or `int`. In order to derive certain units, we 
+On top of that, an additional `Scalar` unit is provided. This represents a dimensionless quantity. 
+This is included because while units have multiplication and division overloaded for other units, they have 
+not implemented the same with numerical types like `double` or `int` as the left hand side. In order to derive certain units, we 
 need to utilize the `Scalar` unit. We will discuss unit derivation further later.
 
 By default, a unit is instantiated with the `value` 1.0. The `value` represents the actual numerical value of that instance. 
@@ -35,12 +35,13 @@ We can the build on that like this:
 ```cpp
 static constexpr auto Flag = Plush(10.0);
 ```
-The factors will bu multiplied, leaving a total value of `10.0 * 10.0 = 100.0`. This value represents how big our unit is in SI units, namely `100.0 meters`.
+The factors will be multiplied, leaving a total value of `10.0 * 10.0 = 100.0`. This value represents how big our unit is in SI units, namely `100.0 meters`.
 
 ## Unit Types
 In this library, every unit is represented using a single struct, `Unit`. This `Unit` struct stores all the information about a unit's dimensionality as template parameters.
-Because of that, it's incredibly tedious to manually specify the desired type all the time. Imagine if we needed to type out `Unit<-2, 1, 0, 0, 0, 0, 0>` every time we wanted
-acceleration. To solve this, two methods of specifying the unit are provided.
+Because of that, it's incredibly tedious to manually specify the desired type all the time.
+Imagine if we needed to type out `Unit<-2, 1, 0, 0, 0, 0, 0>` every time we wanted acceleration.
+To solve this, two methods of specifying the unit are provided.
 
   ### Fundamental Types
   For fundamental types, an explicit group of pre-defined type-aliases are defined. They are all located in the `SI::Types::*` namespace.
